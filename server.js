@@ -18,6 +18,13 @@ app.get('/',function(req,res){
 
 });
 
+app.get('/testtwilio',function(req,res){
+       
+     res.sendFile(path.join(__dirname + '/testtwilio.html'));
+
+});
+
+
 
 
 app.listen(port, function(){
@@ -25,7 +32,7 @@ app.listen(port, function(){
 });
 
 
-app.get('/testtwilio', function(req, res){
+app.get('/testtwilio.html', function(req, res){
 	client.sendMessage({
 		to: '+15084107028',
 		from: '+15087147358',
