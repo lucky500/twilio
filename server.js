@@ -32,7 +32,11 @@ app.listen(port, function(){
 });
 
 
+<<<<<<< HEAD
 app.get('/testtwilio.html', function(req, res){
+=======
+app.get('/testTwilio', function(req, res){
+>>>>>>> 1afbdb896d0933747d5e0fd76bc85314fc27e2ed
 	client.sendMessage({
 		to: '+15084107028',
 		from: '+15087147358',
