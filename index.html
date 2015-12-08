@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Twilio App</title>
+<script type="text/javascript">
+	
+	function validatePhone(){
+
+		var phone  = document.getElementById("phone1").value;
+		if(phone.length === 0) {
+				console.log("phone number is required.");
+				producePrompt("Phone number is required.", "messagePrompt", "red");
+				return false;
+			} 
+
+		if(!phone.match(/^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/)) 
+		{
+			producePrompt("Please enter a valid Phone number.", "messagePrompt", "red");
+			return false;
+			}
+			producePrompt("", "messagePrompt", "green");
+			return true;
+		}
+
+		function producePrompt(message, promptLocation, color) {
+			document.getElementById(promptLocation).innerHTML = message;
+			document.getElementById(promptLocation).style.color = color;
+		}
+
+		function remove_msg(){
+			producePrompt(" ", "messagePrompt", "red");
+		}
+
+		function validateCommentForm(){
+			if(!validatePhone()){
+				alert("Thank you, your message it's on its way!");
+			} else {
+				window.location.href = "/twilio.ejs";
+			}
+		}
+</script>
+<style>
+	/*  * {
+	 		outline: 2px solid red;
+	 	} */ 
+	* {margin: 0; padding: 0;}
+
+html {
+    background-color: #34495e;
+}
+
+body {
+    font-family: arial, verdana;
+}
+
+#msform {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0,0,0, 0.4);
+    padding: 20px 30px;
+    
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+}
+
+#phone1 {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 10px;
+    width: 80%;
+    text-align: center;
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-size: 13px;
+}
+
+#button {
+    background: #7f8c8d;
+    font-weight: bold;
+    color: #ecf0f1;
+    border: 0 none;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 20px 5px;
+    
+}
+	
+	#messagePrompt {
+		color: red;
+		font-size: 10px;
+				}
+
+</style>
+</head>
+<body>
+	<form id="msform">
+		<fieldset>
+		<p>Please enter your phone number below:</p>
+		<input type="tel" name="phone1" id="phone1" placeholder="(000)000-0000" onchange="validatePhone()"/ onmouseover="remove_msg()">
+		<label for="" id="messagePrompt"></label>
+		<br>
+	  	<input id="button" type="button"  value="send message"  onclick="validateCommentForm()"/>
+	  	</fieldset>
+	</form>
+</body>
+</html>

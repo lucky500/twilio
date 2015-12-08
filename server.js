@@ -4,13 +4,21 @@ var path = require('path');
 var port = process.env.PORT || 8080;
 var	client = require('twilio')('AC9bb73ecdcf906e633e1cc2a14500b329','3d0b41afc1c183a59f8d674901956f27');
 
-app.get('/', function(req, res){
-	res.render('index.ejs');
+/*app.get('/index', function(req, res){
+	res.render('index.html');
 });
 
-app.set('view engine', 'ejs');
+app.set('views', __dirname + 'client/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');*/
 
-app.set('views', path.resolve(__dirname, 'client', 'views'));
+app.get('/',function(req,res){
+       
+     res.sendFile(path.join(__dirname + '/index.html'));
+
+});
+
+
 
 app.listen(port, function(){
 	console.log('I\'m Listening on ...' + port);
