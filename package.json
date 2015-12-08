@@ -1,0 +1,9 @@
+{
+  "name": "twilio-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest",
+    "twilio": "^2.6.0",
+    "ejs": "latest"
+  }
+}
